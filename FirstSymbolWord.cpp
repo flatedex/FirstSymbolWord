@@ -1,6 +1,43 @@
 #include <iostream>
+#include <vector>
+#include <sstream>
 
 const char DELIMITER = ' ';
+
+void Split(std::string text, std::vector<std::string>& collection) {
+    std::string temp = "";
+
+    for (int i = 0; i < static_cast<int>(text.size()); i++) {
+        if (text[i] != DELIMITER) {
+            temp += text[i];
+        }
+        else {
+            collection.push_back(temp);
+            temp = "";
+        }
+    }
+}
+
+std::string FindWord(std::string text, char symbol) {
+
+    std::vector<std::string> words(text.size() / 2 + 1);
+
+    Split(text, words);
+
+    for (auto& item : words) { // erase empty elements from vector
+        if (item.empty()) {
+            words.erase(words.begin());
+        }
+    }
+
+    for (auto& item : words) {
+        if (item[0] == symbol) {
+            return item;
+        }
+    }
+    
+    return "";
+}
 
 int main()
 {
@@ -9,23 +46,18 @@ int main()
     std::string text = "";
     std::string answer = "";
     char symbol;
-    std::cin >> text >> symbol;
+    std::cout << "Enter your text: " << std::endl;
+    std::getline(std::cin, text);
+
+    std::cout << "Enter your symbol: " << std::endl;
+    std::cin >> symbol;
 
     answer = FindWord(text, symbol);
-
-    std::cout << answer << std::endl;
-}
-std::string FindWord(std::string text, char symbol) {
-    for (auto piece : text) {
-        if (piece == symbol) {
-            break;
-        }
+    if (answer != "") {
+        std::cout << answer + " is what you were finding for!" << std::endl;
     }
-    return text;
-}
-std::string WordConstructor(std::string text) {
-    for (auto piece : text) {
-
+    else {
+        std::cout << "There is no such word that begins with " + symbol << std::endl;
     }
-    return text;
+    
 }
