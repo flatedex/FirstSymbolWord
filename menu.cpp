@@ -127,6 +127,7 @@ void MainFunction(void) {
 	std::string afterText;
 	std::string result = "";
 	char symbol = ' ';
+	const int castSingleChar = 1;
 
 	do {
 		std::string filePath = "nothing";
@@ -155,7 +156,7 @@ void MainFunction(void) {
 			std::cout << result + " is what you were finding for!" << std::endl;
 		}
 		else {
-			std::string ans(1, symbol);
+			std::string ans(castSingleChar, symbol);
 			std::cout << "There is no such word that begins with " + ans << std::endl;
 		}
 
