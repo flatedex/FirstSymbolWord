@@ -14,7 +14,7 @@ void Greeting() {
 	SetConsoleCP(1251);
 
 	std::cout << "Zakirov Ilyas 404" << std::endl;
-	std::cout << "Lab 1, variant #4" << std::endl;
+	std::cout << "Lab 1, variant #7" << std::endl;
 	std::cout << "Defined text. Find first word that begins with provided symbol." << std::endl;
 }
 
